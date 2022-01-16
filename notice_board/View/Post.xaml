@@ -46,7 +46,7 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
-                    <ListBox x:Name="lb_post"/>
+                    <ListBox x:Name="lb_Post"/>
 
                 </Grid>
 

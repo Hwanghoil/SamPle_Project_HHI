@@ -160,16 +160,11 @@
                         <ColumnDefinition Width="8*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="생년월일"  FontSize="20"   HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <PasswordBox Width="150" Height="30" Style="{StaticResource PassWord2}" HorizontalAlignment="Left"/>
-                    </Grid>
+                 
                 </Grid>
 
                 
-                <Grid Grid.Row="11">
+                <Grid Grid.Row="9">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <Button Style="{StaticResource complete_btn}" Height="50" Width="100" Margin="5,0,0,0">
                             <TextBlock Text="가입 하기" />

@@ -25,7 +25,7 @@ namespace notice_board.View
         public Post()
         {
             InitializeComponent();
-         // lb_post.ItemsSource = Post.Instance.GetPost();
+        // lb_Post.ItemsSource = Post.Instance.GetPost();
         }
 
         private void Home_go_Click(object sender, RoutedEventArgs e)

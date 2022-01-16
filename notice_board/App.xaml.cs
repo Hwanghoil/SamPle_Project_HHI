@@ -18,5 +18,11 @@ namespace notice_board
            /* Uri uri = new Uri("/View/post.xaml", UriKind.Relative);
             NavigationService.Navigate(uri); */
         }
+
+        private void TextBox_num(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+           /* Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text); */
+        }
     }
 }

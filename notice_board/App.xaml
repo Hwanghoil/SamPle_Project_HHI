@@ -283,6 +283,34 @@
             </Setter>
         </Style>
 
+        <Style TargetType="TextBox" x:Key="Write_Box_only_num" >
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="BorderBrush" Value="#bd71ff"/>
+            <EventSetter Event="PreviewTextInput" Handler="TextBox_num"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#e2b9ff"/>
+                                <Setter Property="BorderThickness" TargetName="border" Value="3"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style TargetType="PasswordBox" x:Key="PassWord">
             <Setter Property="BorderBrush" Value="#bd71ff"/>
         </Style>
@@ -303,7 +331,8 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
 
-
+        <!---->
+        
         <DataTemplate x:Key="ListItem_Template">
             <Grid x:Name="grid" HorizontalAlignment="Left" VerticalAlignment="Stretch">
                 <Grid>
