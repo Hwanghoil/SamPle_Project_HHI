@@ -1,0 +1,114 @@
+﻿<Page x:Class="notice_board.View.home"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:notice_board.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="910" d:DesignWidth="1900"
+      Title="home">
+
+    <Grid Background="White">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="1.5*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="9*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+
+            <Grid Grid.Column="1" >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="9*"/>
+                    <RowDefinition Height="0.5*"/>
+
+                </Grid.RowDefinitions>
+
+
+                <Grid Grid.Row="1">
+                    <Border BorderThickness="0,0,0,2" BorderBrush="#bd71ff"/>
+                    <TextBlock Text="글 목록" VerticalAlignment="Center" FontSize="20" Foreground="#bd71ff"/>
+
+                </Grid>
+
+                <Grid Grid.Row="2" Background="Beige">
+                    <ListBox x:Name="lb_Home" ItemContainerStyle="{StaticResource listboxContainStyle}" ItemTemplate="{StaticResource ListItem_Template}" BorderThickness="0">
+
+                    </ListBox>
+
+                </Grid>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Button Style="{StaticResource main_btn}">
+                            <TextBlock Text="HHI" Style="{StaticResource main}"/>
+                        </Button>
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <StackPanel  Orientation="Horizontal">
+                            <TextBox Width="550" Height="50" Style="{StaticResource searchBox}"/>
+
+                            <Button Width="50" Height="50" Style="{StaticResource sub_btn}">
+                                <TextBlock Text="🔍"/>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Grid.Column="3">
+                        <Button Width="90" Height="50" Style="{StaticResource sub_btn2}"  Click="Write_Click" >
+                            <TextBlock Text="글 작성 🖊︎"/>
+                        </Button>
+                    </Grid>
+
+                    <Grid Grid.Column="4">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBox   Tag="아이디"  Height="20" Width="100" Style="{StaticResource ID}"/>
+                                <PasswordBox Tag="비밀번호" Height="20" Width="100" Style="{StaticResource PassWord}"/>
+                                <CheckBox>
+                                    <TextBlock Text="자동 로그인"/>
+                                </CheckBox>
+                            </StackPanel>
+
+                            <Button Height="40" Width="50" VerticalAlignment="Top" Style="{StaticResource login_btn}">
+                                <TextBlock Text="로그인" />
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Grid.Column="5">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Button Style="{StaticResource main_btn}" Click="Post_Click">
+                                <TextBlock Text="아이디 찾기" />
+                            </Button>
+
+                            <Button Style="{StaticResource main_btn}" Click="Signup_Click">
+                                <TextBlock Text="회원 가입"/>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

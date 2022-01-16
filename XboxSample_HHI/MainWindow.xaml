@@ -1,0 +1,794 @@
+﻿<Window x:Class="XboxSample_HHI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XboxSample_HHI"
+        mc:Ignorable="d"
+        Icon="xbox_logo.ico"
+        Title="Xbox 공식 사이트: 콘솔, 게임 및 커뮤니티ㅣxbox" Height="910" Width="1900" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <DoubleAnimation x:Key="MoveAnimationKey"
+            Storyboard.TargetName="imageSlideStackPanel"
+            Storyboard.TargetProperty="(Canvas.Left)"
+            SpeedRatio="2"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55"/>
+            <RowDefinition Height="705"/>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="0.02*"/>
+                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Button Width="130" Style="{StaticResource Top_Btn}">
+                    <Image Source="Images/MS.PNG" Stretch="UniformToFill" Height="45"/>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <TextBlock Text="I" FontSize="35" HorizontalAlignment="Center"/>
+            </Grid>
+
+            <Grid Grid.Column="3">
+                <Button Style="{StaticResource Top_Btn}">
+                    <Image Source="Images/xbox.PNG" Stretch="Fill" Height="25" Width="90"/>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="4">
+                <StackPanel Orientation="Horizontal">
+                    <Button Style="{StaticResource Gamepass_btn}" Width="100" Click="Menu_Click" x:Name="Gamepass_btn" ContextMenuService.IsEnabled="false">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Game Pass" Style="{StaticResource Gamepass_Header_Style}"/>
+                            <TextBlock Text=" ▽"/>
+                        </StackPanel>
+                        <Button.ContextMenu>
+                            <ContextMenu >
+                                <ContextMenu.Template>
+                                    <ControlTemplate>
+                                        <Grid Height="200" Width="253" Background="#F2F2F2">
+                                            <Border Style="{StaticResource Menu_Border}">
+                                                <StackPanel>
+                                                    <Button  Style="{StaticResource  Menu_GamePass}">
+                                                        <TextBlock  Text="개요" Style="{StaticResource  Menu_Gamepass_text}"/>
+                                                    </Button>
+
+                                                    <Button Style="{StaticResource  Menu_GamePass}">
+                                                        <TextBlock Text="게임 살펴보기" Style="{StaticResource  Menu_Gamepass_text}"/>
+                                                    </Button>
+
+                                                    <Button Style="{StaticResource  Menu_GamePass}">
+                                                        <TextBlock Text="Xbox Game Pass PC용" Style="{StaticResource  Menu_Gamepass_text}"/>
+                                                    </Button>
+
+                                                    <Button Style="{StaticResource  Menu_GamePass}">
+                                                        <TextBlock Text="Xbox Live Gold"  Style="{StaticResource  Menu_Gamepass_text}"/>
+                                                    </Button>
+                                                </StackPanel>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </ContextMenu.Template>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
+
+                    <Button Style="{StaticResource Game_btn}"  Width="70" Click="Menu_Click" x:Name="Game_btn" ContextMenuService.IsEnabled="false">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="게임" Style="{StaticResource Game_Header_Style}"/>
+                            <TextBlock Text=" ▽"/>
+                        </StackPanel>
+                        <Button.ContextMenu>
+                            <ContextMenu >
+                                <ContextMenu.Template>
+                                    <ControlTemplate>
+                                        <Border Style="{StaticResource Menu_Border}">
+                                            <Grid Height="270" Width="615" Background="#F2F2F2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid Grid.Column="0">
+                                                    <StackPanel Orientation="Vertical">
+                                                        <TextBlock Text="콘솔 게임" Style="{StaticResource Menu_Headertext}"/>
+
+                                                        <Button  Style="{StaticResource Menu_Game}">
+                                                            <TextBlock Text="모든 콘솔 게임 살펴보기" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Game}">
+                                                            <TextBlock Text="최적화 게임"  Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Game}">
+                                                            <TextBlock Text="역호환 게임" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Game}">
+                                                            <TextBlock Text="골드 멤버쉽으로 즐기세요" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Game}">
+                                                            <TextBlock Text="골드 멤버쉽 특가" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Grid>
+
+                                                <Grid Grid.Column="1">
+                                                    <StackPanel Orientation="Vertical">
+                                                        <TextBlock Text="PC 게임" Style="{StaticResource Menu_Headertext}"/>
+
+                                                        <Button Style="{StaticResource Menu_Game}">
+                                                            <TextBlock Text="Xbox로 PC 게임" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Game}">
+                                                            <TextBlock Text="Xbox Game Pass"  Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Grid>
+
+                                                <Grid Grid.Column="2">
+                                                    <StackPanel Orientation="Vertical">
+                                                        <TextBlock Text="모든 게임" Style="{StaticResource Menu_Headertext}"/>
+
+                                                        <Button Style="{StaticResource Menu_Game}">
+                                                            <TextBlock Text="게임 쇼케이스" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Game}">
+                                                            <TextBlock Text="선불 코드 사용"  Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Game}">
+                                                            <TextBlock Text="세일 and 특가"  Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Grid>
+
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </ContextMenu.Template>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
+
+                    <Button Style="{StaticResource Device_btn}" Width="70" Click="Menu_Click" x:Name="Device_btn" ContextMenuService.IsEnabled="false">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="장치" Style="{StaticResource Device_Header_Style}"/>
+                            <TextBlock Text=" ▽"/>
+                        </StackPanel>
+                        <Button.ContextMenu>
+                            <ContextMenu >
+                                <ContextMenu.Template>
+                                    <ControlTemplate>
+                                        <Border Style="{StaticResource Menu_Border}">
+                                            <Grid Height="310" Width="390" Background="#F2F2F2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid Grid.Column="0">
+                                                    <StackPanel Orientation="Vertical">
+                                                        <TextBlock Text="콘솔" Style="{StaticResource Menu_Headertext}" Width="150"/>
+
+                                                        <Button Style="{StaticResource Menu_Device}">
+                                                            <TextBlock Text="Xbox 콘솔" Style="{StaticResource Menu_Device_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Device}">
+                                                            <TextBlock Text="새로운 Xbox Series X"  Style="{StaticResource Menu_Device_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Device}">
+                                                            <TextBlock Text="새로운 Xbox Series S"  Style="{StaticResource Menu_Device_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Device}">
+                                                            <TextBlock Text="Xbox Alll Access"  Style="{StaticResource Menu_Device_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Device}">
+                                                            <TextBlock Text="모든 콘솔 쇼핑하기" Style="{StaticResource Menu_Device_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Device}">
+                                                            <TextBlock Text="구입처"  Style="{StaticResource Menu_Device_text}"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Grid>
+
+                                                <Grid Grid.Column="1">
+                                                    <StackPanel Orientation="Vertical">
+                                                        <TextBlock Text="엑세서리" Style="{StaticResource Menu_Headertext}" Width="150"/>
+
+                                                        <Button Style="{StaticResource Menu_Device}">
+                                                            <TextBlock Text="모든 엑세서리 쇼핑하기" Style="{StaticResource Menu_Device_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Device}">
+                                                            <TextBlock Text="컨트롤러"  Style="{StaticResource Menu_Device_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Device}">
+                                                            <TextBlock Text="헤드셋"  Style="{StaticResource Menu_Device_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Device}">
+                                                            <TextBlock Text="하드 드라이브 및 스토리지"  Style="{StaticResource Menu_Device_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Device}">
+                                                            <TextBlock Text="모바일 게임 액세서리" Style="{StaticResource Menu_Device_text}"/>
+                                                        </Button>
+
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </ContextMenu.Template>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
+
+                    <Button Style="{StaticResource Community_btn}" Width="100" Click="Menu_Click" x:Name="Community_btn" ContextMenuService.IsEnabled="false">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="커뮤니티" Style="{StaticResource Community_Header_Style}"/>
+                            <TextBlock Text=" ▽"/>
+                        </StackPanel>
+
+                        <Button.ContextMenu>
+                            <ContextMenu>
+                                <ContextMenu.Template>
+                                    <ControlTemplate>
+                                        <Border Style="{StaticResource Menu_Border}">
+                                            <Grid Height="230" Width="615" Background="#F2F2F2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid Grid.Column="0">
+                                                    <StackPanel Orientation="Vertical">
+                                                        <TextBlock Text="커뮤니티" Style="{StaticResource Menu_Headertext}"/>
+
+                                                        <Button Style="{StaticResource Menu_community}">
+                                                            <TextBlock Text="멀티플레이어 게이밍" Width="150" Style="{StaticResource Menu_Style2}"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Grid>
+
+                                                <Grid Grid.Column="1">
+                                                    <StackPanel Orientation="Vertical">
+                                                        <TextBlock Text="전체이용가" Style="{StaticResource Menu_Headertext}"/>
+
+                                                        <Button Style="{StaticResource Menu_community}">
+                                                            <TextBlock Text="우리의 철학" Style="{StaticResource Menu_community_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_community}">
+                                                            <TextBlock Text="책임감 있는 게임"  Style="{StaticResource Menu_community_text}"/>
+                                                        </Button>
+
+
+                                                        <Button Style="{StaticResource Menu_community}">
+                                                            <TextBlock Text="접근 가능한 게임" Style="{StaticResource Menu_community_text}"/>
+                                                        </Button>
+
+
+                                                        <Button Style="{StaticResource Menu_community}">
+                                                            <TextBlock Text="커뮤니티 기준"  Style="{StaticResource Menu_community_text}"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Grid>
+
+                                                <Grid Grid.Column="2">
+                                                    <StackPanel Orientation="Vertical">
+                                                        <TextBlock Text="모든 게임" Style="{StaticResource Menu_Headertext}"/>
+
+                                                        <Button Style="{StaticResource Menu_community}">
+                                                            <TextBlock Text="모바일용 Xbox 앱" Style="{StaticResource Menu_community_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_community}">
+                                                            <TextBlock Text="Windows 10용 Xbox 앱"  Style="{StaticResource Menu_community_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_community}">
+                                                            <TextBlock Text="Xbox 보호자 통제 앱"  Style="{StaticResource Menu_community_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_community}">
+                                                            <TextBlock Text="콘솔 엔터테인먼트 앱"  Style="{StaticResource Menu_community_text}"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Grid>
+
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </ContextMenu.Template>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
+
+                    <Button Style="{StaticResource Help_Btn}" Width="110" Click="Menu_Click" x:Name="Help_btn" ContextMenuService.IsEnabled="false">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Xbox 지원" Style="{StaticResource Help_Header_Style}"/>
+                            <TextBlock Text=" ▼"/>
+                        </StackPanel>
+
+                        <Button.ContextMenu>
+                            <ContextMenu Placement="Top">
+                                <ContextMenu.Template>
+                                    <ControlTemplate>
+                                        <Grid Height="270" Width="260" Background="#F2F2F2">
+                                            <Border Style="{StaticResource Menu_Border}">
+                                                <StackPanel>
+                                                    <Button  Style="{StaticResource  Menu_help2}">
+                                                        <TextBlock  Text="지원 홈" Style="{StaticResource  Menu_Gamepass_text}"/>
+                                                    </Button>
+
+                                                    <Button Style="{StaticResource  Menu_help2}">
+                                                        <TextBlock Text="Xbox 상태" Style="{StaticResource  Menu_Gamepass_text}"/>
+                                                    </Button>
+
+                                                    <Button Style="{StaticResource  Menu_GamePass}" Click="Menu_Plus_Click"  ContextMenuService.IsEnabled="false">
+                                                        <TextBlock Text="도움말 항목 ▶" Style="{StaticResource  Menu_Gamepass_text}"/>
+                                                        <Button.ContextMenu>
+                                                            <ContextMenu>
+                                                                <ContextMenu.Template>
+                                                                    <ControlTemplate>
+                                                                        <Grid Height="270" Width="260" Background="#E6E6E6">
+                                                                            <Border Style="{StaticResource Menu_Border}">
+                                                                                <StackPanel>
+                                                                                    <Button  Style="{StaticResource  Menu_help}">
+                                                                                        <TextBlock  Text="계정 및 프로필" Style="{StaticResource  Menu_Gamepass_text}"/>
+                                                                                    </Button>
+
+                                                                                    <Button Style="{StaticResource  Menu_help}">
+                                                                                        <TextBlock Text="구독 및 청구" Style="{StaticResource  Menu_Gamepass_text}"/>
+                                                                                    </Button>
+
+                                                                                    <Button Style="{StaticResource  Menu_help}">
+                                                                                        <TextBlock Text="하드웨어 및 네트워킹" Style="{StaticResource  Menu_Gamepass_text}"/>
+                                                                                    </Button>
+
+                                                                                    <Button Style="{StaticResource  Menu_help}">
+                                                                                        <TextBlock Text="가족 및 온라인 안전"  Style="{StaticResource  Menu_Gamepass_text}"/>
+                                                                                    </Button>
+
+                                                                                    <Button Style="{StaticResource  Menu_help}">
+                                                                                        <TextBlock Text="게임과 앱"  Style="{StaticResource  Menu_Gamepass_text}"/>
+                                                                                    </Button>
+
+                                                                                    <Button Style="{StaticResource  Menu_help}">
+                                                                                        <TextBlock Text="친구 및 소셜 활동"  Style="{StaticResource  Menu_Gamepass_text}"/>
+                                                                                    </Button>
+                                                                                </StackPanel>
+                                                                            </Border>
+                                                                        </Grid>
+                                                                    </ControlTemplate>
+                                                                </ContextMenu.Template>
+                                                            </ContextMenu>
+                                                        </Button.ContextMenu>
+                                                    </Button>
+
+
+                                                    <Button Style="{StaticResource  Menu_help2}">
+                                                        <TextBlock Text="엑세스 가능한 게임"  Style="{StaticResource  Menu_Gamepass_text}"/>
+                                                    </Button>
+
+                                                    <Button Style="{StaticResource  Menu_help2}">
+                                                        <TextBlock Text="지원의 새로운 사항"  Style="{StaticResource  Menu_Gamepass_text}"/>
+                                                    </Button>
+                                                </StackPanel>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </ContextMenu.Template>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="6">
+                <Button Style="{StaticResource Microsoft_btn}" Width="130" Click="Microsoft_Click" x:Name="Microsoft_btn" ContextMenuService.IsEnabled="false">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Microsoft 전체" Style="{StaticResource Microsoft_Header_Style}"/>
+                        <TextBlock Text=" ▽"/>
+                    </StackPanel>
+                    <Button.ContextMenu>
+                        <ContextMenu>
+                            <ContextMenu.Template>
+                                <ControlTemplate>
+                                    <Border Style="{StaticResource Menu_Border}">
+                                        <Grid Height="430" Width="1230">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="8*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Border BorderThickness="0,0,0,1" BorderBrush="#D3D3D3">
+                                                <Grid Grid.Row="0" Background="#F2F2F2">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Button Style="{StaticResource Menu_Microsoft}">
+                                                            <TextBlock Text="Microsoft 365" Style="{StaticResource Menu_Microsoft_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft}">
+                                                            <TextBlock Text="Office" Style="{StaticResource Menu_Microsoft_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft}">
+                                                            <TextBlock Text="Microsoft 365" Style="{StaticResource Menu_Microsoft_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft}">
+                                                            <TextBlock Text="Windows" Style="{StaticResource Menu_Microsoft_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft}">
+                                                            <TextBlock Text="Surface" Style="{StaticResource Menu_Microsoft_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft}">
+                                                            <TextBlock Text="Xbox" Style="{StaticResource Menu_Microsoft_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft}">
+                                                            <TextBlock Text="지원" Style="{StaticResource Menu_Microsoft_text}"/>
+                                                        </Button>
+                                                    </StackPanel>
+
+                                                </Grid>
+                                            </Border>
+
+                                            <Grid Grid.Row="1" Background="#F2F2F2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid Grid.Column="0">
+                                                    <StackPanel Orientation="Vertical">
+                                                        <TextBlock Text="소프트웨어" Style="{StaticResource Menu_Headertext}"/>
+
+                                                        <Button  Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Windows 앱" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="OneDrive"  Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Outlook" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Skype" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="OneNote" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Miicrosoft Teams" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Grid>
+
+                                                <Grid Grid.Column="1">
+                                                    <StackPanel Orientation="Vertical">
+                                                        <TextBlock Text="PC 및 장치" Style="{StaticResource Menu_Headertext}"/>
+
+                                                        <Button  Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Xbox 쇼핑" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="주변 기기"  Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Grid>
+
+                                                <Grid Grid.Column="2">
+                                                    <StackPanel Orientation="Vertical">
+                                                        <TextBlock Text="엔터테인먼트" Style="{StaticResource Menu_Headertext}"/>
+
+                                                        <Button  Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Xbox Game Pass Ultimate" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Xbox Live Gold"  Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Xbox 및 게임" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="PC 게임" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Windows 게임" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Grid>
+
+                                                <Grid Grid.Column="3">
+                                                    <StackPanel Orientation="Vertical">
+                                                        <TextBlock Text="기업 고객용" Style="{StaticResource Menu_Headertext}"/>
+
+                                                        <Button  Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Microsoft Azure" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Microsoft Dynamics 365"  Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Microsoft 365" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Microsoft Industry" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="데이터 플랫폼" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Power Platform" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="비지니스 쇼핑" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Grid>
+
+                                                <Grid Grid.Column="4">
+                                                    <StackPanel Orientation="Vertical">
+                                                        <TextBlock Text="Developer , IT" Style="{StaticResource Menu_Headertext}"/>
+
+                                                        <Button  Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text=".NET" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Visual Studio"  Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Windows Server" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Windows 앱 개발" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="문서" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="Power Apps" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Grid>
+
+                                                <Grid Grid.Column="5">
+                                                    <StackPanel Orientation="Vertical">
+                                                        <TextBlock Text="기타" Style="{StaticResource Menu_Headertext}"/>
+
+                                                        <Button  Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="무료 다운로드 및 보안" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="교육"  Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+
+                                                        <Button Style="{StaticResource Menu_Microsoft2}">
+                                                            <TextBlock Text="볼륨 라이선싱" Style="{StaticResource Menu_Game_text}"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Grid>
+
+                                            <Grid Grid.Row="2" Background="#E6E6E6">
+                                                <Button HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource Menu_Microsoft3}">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="사이트맵 보기" Style="{StaticResource Menu_Microsoft_text}"/>
+                                                        <TextBlock Text=" ▷"/>
+                                                    </StackPanel>
+                                                </Button>
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </ContextMenu.Template>
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="7">
+                <Button Style="{StaticResource Search_btn}" Width="70" Height="50" Click="Microsoft_Click"  x:Name="Search_btn">
+                    <StackPanel Orientation="Horizontal" Width="70" Height="50">
+                        <TextBlock Text="검색" FontSize="15" Style="{StaticResource Search_Header_Style}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Image Source="/Images/glass.jpg" Width="30"/>
+                    </StackPanel>
+
+                    <Button.ContextMenu>
+                        <ContextMenu x:Name="Ctm_Search" >
+                            <ContextMenu.Template>
+                                <ControlTemplate>
+                                    <Grid Height="40" Width="1380" Background="#F2F2F2">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBox Width="1300" Height="40" BorderBrush="#0067B8" BorderThickness="3" FontSize="20" VerticalAlignment="Center"/>
+                                            <Button  Width="75" Click="Button_Click" Content="취소" Margin="5,0,0,0" Background="White" BorderBrush="Black" Style="{StaticResource Menu_Btn}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </ControlTemplate>
+                            </ContextMenu.Template>
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="8">
+                <Button Style="{StaticResource Login_btn}" Width="100" x:Name="Login_btn">
+                    <StackPanel Orientation="Horizontal" Width="100" Height="60">
+                        <TextBlock Text="로그인" Style="{StaticResource Login_Header_Style}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                        <Image Source="/Images/login.PNG" Width="50" Height="30"/>
+                    </StackPanel>
+                </Button>
+
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Canvas
+            Width="1900"
+            Height="705"
+            ClipToBounds="True">
+                <StackPanel x:Name="imageSlideStackPanel"
+                Canvas.Left="0"
+                Height="705"
+                Orientation="Horizontal">
+                    <Image Width="1900" Height="705" Source="/Images/AD1.png" />
+                    <Image Width="1900" Height="705" Source="/Images/AD2.png" />
+                    <Image Width="1900" Height="705" Source="/Images/AD3.png" />
+                </StackPanel>
+            </Canvas>
+            <StackPanel  Height="30" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Orientation="Horizontal" Background="#64F2F2F2">
+                <TextBlock Text="1" MouseDown="textBlock_MouseDown" Style="{StaticResource Image_Text}"/>
+                <TextBlock Text="2" MouseDown="textBlock_MouseDown" Style="{StaticResource Image_Text}"/>
+                <TextBlock Text="3" MouseDown="textBlock_MouseDown" Style="{StaticResource Image_Text}"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Button Height="70" Width="50" Style="{StaticResource Bottom_Btn}">
+                    <StackPanel Orientation="Vertical" Height="70" Width="40">
+                        <Viewbox Width="30" Height="50">
+                            <Canvas Width="30" Height="30" VerticalAlignment="Top" RenderTransformOrigin="0.5,-0.2">
+                                <Path Data="m481 81h-114c-16.542 0-30 13.458-30 30v290c0 16.542 13.458 30 30 30h114c16.804 0 31-13.738 31-30v-290c0-16.262-14.196-30-31-30zm1 30.473v33.527h-115v-34c121.826 0 114.221-.263 115 .473zm-115 289.527v-226h115v225.527c-.778.735 6.754.473-115 .473z" Height="30" Stretch="Fill" Width="30" Fill="#107C10"/>
+                            </Canvas>
+                        </Viewbox>
+                        <TextBlock Text="콘솔" Style="{StaticResource Bottom_Text}"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <Button Height="70" Width="80" Style="{StaticResource Bottom_Btn}">
+                    <StackPanel Orientation="Vertical" Height="70" Width="80">
+                        <Viewbox Width="50" Height="42" Margin="15,0">
+                            <Canvas Width="30" Height="30" VerticalAlignment="Top" RenderTransformOrigin="0.5,-0.2">
+                                <Path Data="m3.461 24.002c-.54 0-1.047-.119-1.506-.358-1.156-.604-1.844-1.897-1.937-3.642-.154-2.891.644-5.719 2.438-8.646 1.349-2.2 2.826-2.781 5.27-2.074 1.214.351 2.542.684 3.764.65 1.116-.02 2.318-.226 3.783-.65 2.442-.707 3.921-.126 5.27 2.074 1.794 2.927 2.592 5.755 2.438 8.646-.093 1.745-.781 3.038-1.937 3.642-1.189.621-2.704.43-4.266-.538-1.219-.755-2.378-1.552-3.351-2.233-1.136-.794-2.721-.794-3.856 0-.973.681-2.132 1.478-3.351 2.233-.958.595-1.9.896-2.759.896zm2.533-14.001c-1.119 0-1.887.576-2.686 1.878-1.685 2.749-2.435 5.388-2.292 8.07.073 1.377.571 2.374 1.401 2.808.862.452 2.027.274 3.276-.5 1.198-.742 2.343-1.53 3.304-2.203 1.474-1.03 3.529-1.03 5.003 0 .961.672 2.106 1.46 3.304 2.202 1.25.775 2.414.953 3.276.501.83-.434 1.328-1.431 1.401-2.808.143-2.682-.606-5.322-2.292-8.07-1.104-1.799-2.149-2.212-4.139-1.636-1.552.449-2.837.668-4.043.689-1.39.035-2.771-.316-4.061-.689-.548-.159-1.025-.242-1.452-.242z" Fill="#107C10" Height="20" Stretch="Fill" Width="30" Canvas.Top="10"/>
+                                <Path Data="m11.5 10.75c-.276 0-.5-.224-.5-.5v-1.75c0-1.93 1.57-3.5 3.5-3.5h6c1.378 0 2.5-1.122 2.5-2.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 1.93-1.57 3.5-3.5 3.5h-6c-1.378 0-2.5 1.122-2.5 2.5v1.75c0 .276-.224.5-.5.5z" Fill="#107C10" Canvas.Left="14.5" Stretch="Fill" Width="9.5"/>
+                            </Canvas>
+                        </Viewbox>
+                        <TextBlock Text="게임"  Margin="0,8,0,0" Style="{StaticResource Bottom_Text}"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="3">
+                <Button Height="70" Width="50" Style="{StaticResource Bottom_Btn}">
+                    <StackPanel Orientation="Vertical" Height="70" Width="50">
+                        <Viewbox Width="50" Height="50">
+                            <Image Source="/Images/gamepass.png" Stretch="Fill"/>
+                        </Viewbox>
+                        <TextBlock Text="콘솔" Style="{StaticResource Bottom_Text}"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="4">
+                <Button Height="70" Width="50" Style="{StaticResource Bottom_Btn}">
+                    <StackPanel Orientation="Vertical" Height="70" Width="50">
+                        <Viewbox Width="50" Height="50">
+                            <Image Source="/Images/AC.png" Stretch="Fill"/>
+                        </Viewbox>
+                        <TextBlock Text="엑세서리" Style="{StaticResource Bottom_Text}"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="5">
+                <Button Height="70" Width="60" Style="{StaticResource Bottom_Btn}">
+                    <StackPanel Orientation="Vertical" Height="70" Width="60">
+                        <Viewbox Width="50" Height="50">
+                            <Image Source="/Images/sale.png" Stretch="Fill"/>
+                        </Viewbox>
+                        <TextBlock Text="할인 상품" Style="{StaticResource Bottom_Text}"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+
+            <Grid Grid.Column="6">
+                <Button Height="70" Width="50" Style="{StaticResource Bottom_Btn}">
+                    <StackPanel Orientation="Vertical" Height="70" Width="50">
+                        <Viewbox Width="50" Height="50">
+                            <Image Source="/Images/login_btn.png" Stretch="Fill"/>
+                        </Viewbox>
+                        <TextBlock Text="로그인" Style="{StaticResource Bottom_Text}"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Grid>
+        
+    </Grid>
+</Window>

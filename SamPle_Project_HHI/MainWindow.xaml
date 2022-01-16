@@ -1,0 +1,26 @@
+﻿<Window x:Class="SamPle_Project_HHI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SamPle_Project_HHI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="180" Width="400">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Grid.Row="0" Text="네이버를 더 안전하고 편리하게 이용하세요" VerticalAlignment="Center" Margin="30,0,0,0"/>
+
+            <Button Grid.Row="1" Margin="30,0,30,0" Content="NAVER 로그인" Style="{StaticResource Naver_Btn}"/>
+
+            <Button Grid.Row="2" Content="아이디/비밀빈호 찾기" HorizontalAlignment="Left" Margin="30,10,0,10" Style="{StaticResource Naver_Btn2}" />
+            <Button Grid.Row="2" Content="회원가입" HorizontalAlignment="Right" Margin="0,10,30,10" Style="{StaticResource Naver_Btn2}"/>
+        </Grid>
+    </Grid>
+</Window>

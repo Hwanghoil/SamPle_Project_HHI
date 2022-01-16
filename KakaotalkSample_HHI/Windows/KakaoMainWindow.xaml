@@ -1,0 +1,216 @@
+﻿<Window x:Class="KakaotalkSample_HHI.Windows.KakaoMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:KakaotalkSample_HHI.Views"
+        xmlns:local="clr-namespace:KakaotalkSample_HHI.Windows"
+        mc:Ignorable="d" WindowStyle="None"  ResizeMode="NoResize"
+         Icon="/Images/kakao_ico.ico"
+        Title="KakaoMainWindow" Height="580" Width="360" Background="Transparent">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="12.5*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Column="1" Background="White" Margin="0,0,0,0">
+                <StackPanel Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Button Width="20" Height="20" Style="{StaticResource Kakao_Btn}" Margin="3"  x:Name="Btn_Minimize" Click="Btn_Minimize_Click">
+                        <Viewbox Width="17" Height="17">
+                            <Canvas Width="20" Height="20">
+                                <Rectangle Width="10" 
+                Stroke="#999999"
+                StrokeThickness="0.75" Canvas.Top="8" Height="1" RenderTransformOrigin="0.5,0.5" Fill="#999999" Canvas.Left="2">
+                                    <Rectangle.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="-1"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                            </Canvas>
+                        </Viewbox>
+                    </Button>
+                    <Button Height="20" Width="20"  Style="{StaticResource Kakao_Btn}" x:Name="Btn_Maximize"  Click="Btn_Maximize_Click">
+                        <Viewbox Height="17" Width="17">
+                            <Canvas Height="20" Width="20">
+                                <Rectangle Width="10" Height="10"
+                Stroke="#999999"
+                StrokeThickness="0.75" Canvas.Top="6"/>
+                            </Canvas>
+                        </Viewbox>
+                    </Button>
+                    <Button  Style="{StaticResource Kakao_Btn}" Height="20" Width="20" x:Name="Btn_Close" Click="Btn_Close_Click">
+                        <Viewbox Height="17" Width="17" >
+                            <Canvas Height="20" Width="20">
+                                <Line    X1="12" Y1="8"     X2="22" Y2="18"  Stroke="#999999" StrokeThickness="0.75" Canvas.Right="8" Canvas.Bottom="3"/>
+                                <Line    X1="12" Y1="18"    X2="22" Y2="8"   Stroke="#999999" StrokeThickness="0.75" Canvas.Right="8" Canvas.Bottom="3"/>
+                            </Canvas>
+                        </Viewbox>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="0" Background="#ECECED" Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <Button Grid.Row="0"  Height="30" Width="30" Style="{StaticResource Elipse_Btn}"/>
+
+            <Button Grid.Column="0" x:Name="Btn_Friend" Click="Btn_Friend_Click" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" Width="25" Height="25" Style="{StaticResource Kakao_Btn}" ToolTip="친구">
+                <Viewbox Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                </Viewbox>
+            </Button>
+
+            <Button Grid.Row="1" x:Name="Btn_Chat" Click="Btn_Chat_Click" Margin="0,10,0,0"  Width="25" Height="25" Style="{StaticResource Kakao_Btn}" ToolTip="채팅" >
+                <Viewbox Width="20" Height="20">
+                    <Canvas Width="35" Height="35">
+                        <Path Data="m74.414 480.548h-36.214l25.607-25.607c13.807-13.807 22.429-31.765 24.747-51.246-59.127-38.802-88.554-95.014-88.554-153.944 0-108.719 99.923-219.203 256.414-219.203 165.785 0 254.682 101.666 254.682 209.678 0 108.724-89.836 210.322-254.682 210.322-28.877 0-59.01-3.855-85.913-10.928-25.467 26.121-59.973 40.928-96.087 40.928z" 
+                              Height="35" Stretch="Fill" Width="34.934" Canvas.Left="0.066" Style="{StaticResource Button}" >
+
+                        </Path>
+                    </Canvas>
+                </Viewbox>
+            </Button>
+
+            <Button Grid.Row="2" x:Name="Btn_Setting" Click="Btn_Setting_Click" Margin="0,0,0,25"  Width="28" Height="25" VerticalAlignment="Top" Style="{StaticResource Kakao_Btn}" ToolTip="더보기">
+                <Viewbox Width="20" Height="20">
+                    <Canvas Width="35" Height="35">
+                        <Path Data="M72.699,127.09c1.333,1.398,2.725,2.73,4.166,4.019c12.586,11.259,29.137,18.166,47.309,18.166
+			s34.723-6.913,47.309-18.166c1.441-1.289,2.834-2.622,4.166-4.019c1.327-1.398,2.622-2.828,3.84-4.329
+			c9.861-12.211,15.8-27.717,15.8-44.6c0-39.216-31.906-71.116-71.116-71.116S53.059,38.95,53.059,78.16
+			c0,16.883,5.939,32.39,15.8,44.6C70.072,124.262,71.366,125.687,72.699,127.09z" Style="{StaticResource Button}" Height="9.711" Stretch="Fill" Width="9.151" Canvas.Top="13" Canvas.Left="25.849"/>
+                        <Path Data="M72.699,127.09c1.333,1.398,2.725,2.73,4.166,4.019c12.586,11.259,29.137,18.166,47.309,18.166
+			s34.723-6.913,47.309-18.166c1.441-1.289,2.834-2.622,4.166-4.019c1.327-1.398,2.622-2.828,3.84-4.329
+			c9.861-12.211,15.8-27.717,15.8-44.6c0-39.216-31.906-71.116-71.116-71.116S53.059,38.95,53.059,78.16
+			c0,16.883,5.939,32.39,15.8,44.6C70.072,124.262,71.366,125.687,72.699,127.09z" Style="{StaticResource Button}" Height="9.712" Stretch="Fill" Width="9.151" Canvas.Left="13" Canvas.Top="13"/>
+                        <Path Data="M72.699,127.09c1.333,1.398,2.725,2.73,4.166,4.019c12.586,11.259,29.137,18.166,47.309,18.166
+			s34.723-6.913,47.309-18.166c1.441-1.289,2.834-2.622,4.166-4.019c1.327-1.398,2.622-2.828,3.84-4.329
+			c9.861-12.211,15.8-27.717,15.8-44.6c0-39.216-31.906-71.116-71.116-71.116S53.059,38.95,53.059,78.16
+			c0,16.883,5.939,32.39,15.8,44.6C70.072,124.262,71.366,125.687,72.699,127.09z" Style="{StaticResource Button}" Height="9.712" Stretch="Fill" Width="9.151" Canvas.Top="13"/>
+                    </Canvas>
+                </Viewbox>
+            </Button>
+
+            <Button Grid.Row="4" VerticalAlignment="Bottom"   Width="25" Height="25" Style="{StaticResource Kakao_Btn4}" ToolTip="카카오 이모티콘샵" >
+                <Viewbox Width="18" Height="18">
+                    <Canvas Width="35" Height="35">
+                        <Path Data="M184,0C82.544,0,0,82.544,0,184s82.544,184,184,184s184-82.544,184-184S285.456,0,184,0z M184,352
+				c-92.64,0-168-75.36-168-168S91.36,16,184,16s168,75.36,168,168S276.64,352,184,352z"  Fill="#3B3B3B" Height="35" Stretch="Fill" Width="35"/>
+                        <Path Data="M72.699,127.09c1.333,1.398,2.725,2.73,4.166,4.019c12.586,11.259,29.137,18.166,47.309,18.166
+			s34.723-6.913,47.309-18.166c1.441-1.289,2.834-2.622,4.166-4.019c1.327-1.398,2.622-2.828,3.84-4.329
+			c9.861-12.211,15.8-27.717,15.8-44.6c0-39.216-31.906-71.116-71.116-71.116S53.059,38.95,53.059,78.16
+			c0,16.883,5.939,32.39,15.8,44.6C70.072,124.262,71.366,125.687,72.699,127.09z" Fill="#3B3B3B" Height="5.074" Stretch="Fill" Width="5" Canvas.Top="10" Canvas.Left="21.878"/>
+                        <Path Data="M72.699,127.09c1.333,1.398,2.725,2.73,4.166,4.019c12.586,11.259,29.137,18.166,47.309,18.166
+			s34.723-6.913,47.309-18.166c1.441-1.289,2.834-2.622,4.166-4.019c1.327-1.398,2.622-2.828,3.84-4.329
+			c9.861-12.211,15.8-27.717,15.8-44.6c0-39.216-31.906-71.116-71.116-71.116S53.059,38.95,53.059,78.16
+			c0,16.883,5.939,32.39,15.8,44.6C70.072,124.262,71.366,125.687,72.699,127.09z" Fill="#3B3B3B" Height="5.074" Stretch="Fill" Width="5" Canvas.Top="10" Canvas.Left="7.122"/>
+                        <Path Data="M261.336,226.04c-3.296-2.952-8.36-2.664-11.296,0.624C233.352,245.312,209.288,256,184,256
+				c-25.28,0-49.352-10.688-66.04-29.336c-2.952-3.288-8-3.576-11.296-0.624c-3.296,2.944-3.568,8-0.624,11.296
+				C125.76,259.368,154.176,272,184,272c29.832,0,58.248-12.64,77.96-34.664C264.904,234.04,264.624,228.984,261.336,226.04z" Height="8.045" Stretch="Fill" Width="19.756" Canvas.Top="22.111"  Fill="#3B3B3B" Canvas.Left="7.122"/>
+                    </Canvas>
+                </Viewbox>
+            </Button>
+
+            <Button Grid.Row="5" VerticalAlignment="Center"   Width="25" Height="25" Style="{StaticResource Kakao_Btn4}" ToolTip="알림">
+                <Viewbox Width="18" Height="18">
+                    <Canvas Width="35" Height="35">
+                        <Path Data="M467.819,431.851l-36.651-61.056c-16.896-28.181-25.835-60.437-25.835-93.312V224
+			c0-82.325-67.008-149.333-149.333-149.333S106.667,141.675,106.667,224v53.483c0,32.875-8.939,65.131-25.835,93.312
+			l-36.651,61.056c-1.984,3.285-2.027,7.403-0.149,10.731c1.899,3.349,5.461,5.419,9.301,5.419h405.333
+			c3.84,0,7.403-2.069,9.301-5.419C469.845,439.253,469.803,435.136,467.819,431.851z M72.171,426.667l26.944-44.907
+			C118.016,350.272,128,314.219,128,277.483V224c0-70.592,57.408-128,128-128s128,57.408,128,128v53.483
+			c0,36.736,9.984,72.789,28.864,104.277l26.965,44.907H72.171z"  Fill="#3B3B3B" Height="34.074" Stretch="Fill" Width="35"/>
+                        <Path Data="M256,0c-23.531,0-42.667,19.136-42.667,42.667v42.667C213.333,91.221,218.112,96,224,96s10.667-4.779,10.667-10.667
+			V42.667c0-11.776,9.557-21.333,21.333-21.333s21.333,9.557,21.333,21.333v42.667C277.333,91.221,282.112,96,288,96
+			s10.667-4.779,10.667-10.667V42.667C298.667,19.136,279.531,0,256,0z" Fill="#3B3B3B" Height="5.074" Stretch="Fill" Width="5" Canvas.Top="-5.074" Canvas.Left="14" RenderTransformOrigin="1.04,-1.734"/>
+                        <Path Data="M302.165,431.936c-3.008-5.077-9.515-6.741-14.613-3.819c-5.099,2.987-6.805,9.536-3.819,14.613
+			c2.773,4.715,4.288,10.368,4.288,15.936c0,17.643-14.357,32-32,32c-17.643,0-32-14.357-32-32c0-5.568,1.515-11.221,4.288-15.936
+			c2.965-5.099,1.259-11.627-3.819-14.613c-5.141-2.923-11.627-1.259-14.613,3.819c-4.715,8.064-7.211,17.301-7.211,26.731
+			C202.667,488.085,226.581,512,256,512s53.333-23.915,53.376-53.333C309.376,449.237,306.88,440,302.165,431.936z" Fill="#3B3B3B" Height="5.074" Stretch="Fill" Width="5" Canvas.Top="34.074" Canvas.Left="14"/>
+                    </Canvas>
+                </Viewbox>
+            </Button>
+
+            <Button Grid.Row="6" VerticalAlignment="Top"  Width="25" Height="25" Style="{StaticResource Kakao_Btn4}" ToolTip="설정" >
+                <Viewbox Width="18" Height="18">
+                    <Canvas Width="35" Height="35">
+                        <Path Data="M256,151c-57.897,0-105,47.103-105,105c0,57.897,47.103,105,105,105c57.897,0,105-47.103,105-105
+			C361,198.103,313.897,151,256,151z M256,331c-41.355,0-75-33.645-75-75c0-41.355,33.645-75,75-75s75,33.645,75,75
+			S297.355,331,256,331z" Fill="#3B3B3B" Height="19" Stretch="Fill" Width="17" Canvas.Left="9" Canvas.Top="7.7"/>
+                        <Path Data="M500.582,211.434l-58.674-14.428c-3.532-11.13-8.068-21.925-13.551-32.249c8.78-14.634,27.343-45.573,27.343-45.573
+			c3.541-5.902,2.611-13.457-2.256-18.324l-42.426-42.426c-4.867-4.867-12.422-5.797-18.324-2.256
+			c-0.38,0.228-30.777,18.466-45.626,27.355c-10.269-5.431-20.995-9.927-32.052-13.434c-4.428-17.976-14.451-58.686-14.452-58.686
+			C298.914,4.711,292.902,0,286,0h-60c-6.903,0-12.915,4.711-14.565,11.414c-4.126,16.76-11.024,44.779-14.45,58.68
+			c-11.762,3.73-23.143,8.578-34.001,14.482c-6.428-3.856-16.007-9.604-24.869-14.921l-22.462-13.477
+			c-5.905-3.541-13.457-2.61-18.324,2.256L54.901,100.86c-4.867,4.867-5.797,12.422-2.256,18.324
+			c0.2,0.335,17.785,29.644,29.271,48.869c-4.712,9.31-8.665,18.986-11.817,28.919c-20.002,4.976-58.223,14.35-58.671,14.46
+			C4.718,213.077,0,219.092,0,226v60c0,6.909,4.719,12.923,11.429,14.568c0.443,0.109,38.381,9.411,58.687,14.436
+			c3.565,11.302,8.184,22.273,13.796,32.78l-26.194,43.66c-3.541,5.902-2.611,13.458,2.256,18.324l42.427,42.427
+			c4.867,4.868,12.421,5.797,18.324,2.256c0.369-0.222,29.463-17.678,43.746-26.227c10.419,5.547,21.313,10.131,32.547,13.692
+			l14.416,58.66C213.079,507.284,219.093,512,226,512h60c6.904,0,12.917-4.713,14.566-11.418l14.427-58.669
+			c11.539-3.661,22.671-8.39,33.257-14.128c14.427,8.656,44.444,26.667,44.444,26.667c5.901,3.541,13.457,2.612,18.324-2.256
+			l42.426-42.427c4.867-4.867,5.797-12.422,2.256-18.324c0,0-18.271-30.452-26.958-44.931c5.308-10.088,9.712-20.634,13.161-31.511
+			c17.824-4.399,58.19-14.317,58.676-14.436C507.285,298.919,512,292.906,512,286v-60C512,219.095,507.287,213.083,500.582,211.434z
+			 M482,274.24c-17.32,4.257-48.723,11.979-54.72,13.479l-1.131,0.283c-5.231,1.36-9.326,5.43-10.719,10.653
+			c-3.795,14.229-9.495,27.872-16.942,40.548c-2.779,4.732-2.753,10.605,0.069,15.312c0.78,1.301,16.489,27.483,25.393,42.322
+			L398.087,422.7c-15.046-9.027-41.716-25.029-41.942-25.165c-4.775-2.866-10.743-2.853-15.501,0.035
+			c-13,7.885-27.109,13.892-41.938,17.854c-5.177,1.383-9.224,5.422-10.614,10.597c-0.828,3.081-1.644,6.34-1.658,6.397L274.241,482
+			h-36.479l-10.813-44.042l-2.916-11.664c-1.322-5.292-5.415-9.45-10.686-10.855c-14.533-3.876-28.479-9.747-41.449-17.447
+			c-4.709-2.797-10.57-2.802-15.285-0.018c-3.23,1.908-27.254,16.313-41.282,24.728l-25.865-25.865l24.661-41.104
+			c2.841-4.736,2.85-10.65,0.022-15.395c-7.784-13.063-13.685-27.073-17.535-41.643c-1.397-5.286-5.56-9.393-10.863-10.719
+			c-10.737-2.684-39.564-9.767-55.752-13.741v-36.473c16.342-4.015,45.537-11.199,55.762-13.786
+			c5.271-1.334,9.408-5.417,10.812-10.671c3.564-13.347,8.822-26.228,15.63-38.286c2.646-4.686,2.578-10.43-0.177-15.053
+			c-7.25-12.166-20.08-33.577-27.632-46.172l25.865-25.866l12.42,7.452c14.968,8.981,31.98,19.188,32.44,19.463
+			c4.768,2.85,10.722,2.832,15.472-0.049c13.341-8.088,27.726-14.222,42.756-18.232c5.264-1.404,9.352-5.552,10.68-10.836
+			c0.282-1.121,9.071-36.815,13.728-55.726h36.49c4.915,19.958,13.621,55.312,13.724,55.722c1.326,5.288,5.417,9.44,10.685,10.845
+			c14.382,3.836,28.193,9.626,41.05,17.208c4.714,2.781,10.57,2.773,15.276-0.021c4.208-2.498,28.881-17.293,43.106-25.827
+			l25.864,25.864c-9.037,15.062-25.121,41.869-25.795,42.991c-2.836,4.725-2.853,10.625-0.043,15.367
+			c7.628,12.872,13.451,26.714,17.308,41.141c1.382,5.167,5.408,9.207,10.57,10.604c3.097,0.839,6.373,1.657,6.428,1.671
+			L482,237.758V274.24z" Fill="#3B3B3B" Height="34.9" Stretch="Fill" Width="35" Canvas.Top="0.1"/>
+                    </Canvas>
+                </Viewbox>
+            </Button>
+        </Grid>
+
+        <TabControl Grid.Column="1" BorderThickness="0" SelectedIndex="0" x:Name="Tab_KakaoMain" VerticalAlignment="Bottom" Height="560">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem"  >
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Margin="0" VerticalAlignment="Stretch">
+                <views:FriendListView x:Name="Friend_View"/>
+            </TabItem>
+            <TabItem Margin="0" VerticalAlignment="Stretch">
+                <views:ChatListView x:Name="ChatList_View"/>
+            </TabItem>
+            <TabItem Margin="0" VerticalAlignment="Stretch">
+                <views:SettingView x:Name="Setting_View"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

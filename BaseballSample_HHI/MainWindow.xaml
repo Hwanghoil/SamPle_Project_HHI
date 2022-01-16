@@ -1,0 +1,563 @@
+﻿<Window x:Class="BaseballSample_HHI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BaseballSample_HHI"
+        xmlns:ctrl="clr-namespace:BaseballSample_HHI.Controls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="2050" Width="1820" MaxHeight="1235" WindowStartupLocation="CenterScreen">
+    <ScrollViewer>
+        <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="980"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="355"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="690"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="710"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Border BorderThickness="0,0,0,3" BorderBrush="Black"/>
+                    <TextBlock Text="KBO리그 기록 및 순위" FontSize="20" FontWeight="Bold" VerticalAlignment="Center"/>
+                    
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <TextBlock Text="팀순위" FontSize="15" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50"/>
+                    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Horizontal" Width="200">
+                        <Button Content="◀" Height="25" Width="15" VerticalAlignment="Bottom" Style="{StaticResource Btn_1}"/>
+                       
+                        <DatePicker Name="ResDatePicker" BorderBrush="Transparent" BorderThickness="0" Style="{StaticResource styleDatePicker}"
+                        Grid.Column="1" 
+                        CalendarStyle="{StaticResource styleCalendar}"
+                        HorizontalAlignment="Left" Width="100" Margin="0" VerticalAlignment="Center" FontSize="12">
+                          
+                        </DatePicker>
+                        
+                        <Button Content="▶" Height="25" Width="15" VerticalAlignment="Bottom" Style="{StaticResource Btn_1}"/>
+
+                        <Button Content="현재" Height="25" Width="30" FontSize="10" VerticalAlignment="Bottom" Margin="15,0,0,0" Style="{StaticResource Btn_2}"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <DataGrid Loaded="DataGrid_Loaded" BorderThickness="1,3,1,1" BorderBrush="#ECECEC" Background="Transparent" CanUserSortColumns="True"
+                           CanUserResizeColumns="False" CanUserReorderColumns="False" GridLinesVisibility="None" 
+                         CanUserResizeRows="False"  AutoGenerateColumns="False" RowHeaderWidth="0" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Rank}" Width="45" HeaderStyle="{StaticResource Rank_style2}" Header="순위" CellStyle="{StaticResource Cell}"/>
+                            <DataGridTextColumn Binding="{Binding Group}" Width="200" HeaderStyle="{StaticResource Rank_style2}" Header="팀" CellStyle="{StaticResource Cell3}"/>
+                            <DataGridTextColumn Binding="{Binding Games}" Width="70" HeaderStyle="{StaticResource Rank_style}" Header="경기수" CellStyle="{StaticResource Cell2}"/>
+                            <DataGridTextColumn Binding="{Binding Win}" Width="70" HeaderStyle="{StaticResource Rank_style}" Header="승" CellStyle="{StaticResource Cell2}"/>
+                            <DataGridTextColumn Binding="{Binding Loss}" Width="70" HeaderStyle="{StaticResource Rank_style}" Header="패" CellStyle="{StaticResource Cell2}"/>
+                            <DataGridTextColumn Binding="{Binding A_draw}" Width="60" HeaderStyle="{StaticResource Rank_style}" Header="무" CellStyle="{StaticResource Cell2}"/>
+                            <DataGridTextColumn Binding="{Binding Winning_rate}" Width="70" HeaderStyle="{StaticResource Rank_style}" Header="승률" CellStyle="{StaticResource Cell2}"/>
+                            <DataGridTextColumn Binding="{Binding Difference}" Width="70" HeaderStyle="{StaticResource Rank_style}" Header="게임차" CellStyle="{StaticResource Cell2}"/>
+                            <DataGridTextColumn Binding="{Binding Continuity}" Width="70" HeaderStyle="{StaticResource Rank_style}" Header="연속" CellStyle="{StaticResource Cell2}"/>
+                            <DataGridTextColumn Binding="{Binding On_base_rate}" Width="70" HeaderStyle="{StaticResource Rank_style}" Header="출루율" CellStyle="{StaticResource Cell2}"/>
+                            <DataGridTextColumn Binding="{Binding Slugging_percentage}" Width="70" HeaderStyle="{StaticResource Rank_style}" Header="장타율" CellStyle="{StaticResource Cell2}"/>
+                            <DataGridTextColumn Binding="{Binding Recently}" Width="1*" HeaderStyle="{StaticResource Rank_style}" Header="최근 10경기" CellStyle="{StaticResource Cell2}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+                <Grid Grid.Row="4">
+                    <TextBlock Text="주요 부문 선두" FontSize="15" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                </Grid>
+
+                <Grid Grid.Row="5">
+                    <Border BorderThickness="0,0,0,1" BorderBrush="Gray"/>
+                </Grid>
+
+                <Grid Grid.Row="6" >
+                    <Border BorderThickness="1,0,1,1" BorderBrush="#E0E0E0"/>
+                    <UniformGrid Columns="4" Rows="3" >
+                        <Grid>
+                            <Border BorderThickness="0,0,1,1" BorderBrush="#E0E0E0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <ctrl:SamllCardHeader   HdTitle="다승 순위"/>
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="1"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="1">
+                                            <Image  Height="90" Width="65" Source="{Binding imageurl}" VerticalAlignment="Top"/>
+                                    
+                                        </Grid>
+                                        <Grid Grid.Column="2">
+                                            <ListBox  x:Name="lb_kboranking" ItemContainerStyle="{StaticResource listboxContainStyle}" BorderThickness="0"/>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <Grid>
+                            <Border BorderThickness="0,0,1,1" BorderBrush="#E0E0E0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <ctrl:SamllCardHeader   HdTitle="평균자책 순위"/>
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="1"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="1">
+                                            <ListBox  x:Name="lb_kboranking14" ItemContainerStyle="{StaticResource listboxContainStyle2}" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <ListBox  x:Name="lb_kboranking2" ItemContainerStyle="{StaticResource listboxContainStyle}" BorderThickness="0"/>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <Grid>
+                            <Border BorderThickness="0,0,1,1" BorderBrush="#E0E0E0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <ctrl:SamllCardHeader HdTitle="탈삼진 순위"/>
+                                    
+                                   
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="1"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="1">
+                                            <ListBox  x:Name="lb_kboranking15" ItemContainerStyle="{StaticResource listboxContainStyle2}" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <ListBox  x:Name="lb_kboranking3" ItemContainerStyle="{StaticResource listboxContainStyle}" BorderThickness="0"/>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <Grid>
+                            <Border BorderThickness="0,0,1,1" BorderBrush="#E0E0E0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <ctrl:SamllCardHeader HdTitle="세이브 순위"/>
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="1"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="1">
+                                            <ListBox  x:Name="lb_kboranking16" ItemContainerStyle="{StaticResource listboxContainStyle2}" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <ListBox  x:Name="lb_kboranking4" ItemContainerStyle="{StaticResource listboxContainStyle}" BorderThickness="0"/>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <Grid>
+                            <Border BorderThickness="1,0,1,1" BorderBrush="#E0E0E0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <ctrl:SamllCardHeader HdTitle="타율 순위"/>
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="1"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="1">
+                                            <ListBox  x:Name="lb_kboranking17" ItemContainerStyle="{StaticResource listboxContainStyle2}" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <ListBox  x:Name="lb_kboranking5" ItemContainerStyle="{StaticResource listboxContainStyle}" BorderThickness="0"/>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <Grid>
+                            <Border BorderThickness="0,0,1,1" BorderBrush="#E0E0E0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <ctrl:SamllCardHeader HdTitle="타점 순위"/>
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="1"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="1">
+                                            <ListBox  x:Name="lb_kboranking18" ItemContainerStyle="{StaticResource listboxContainStyle2}" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <ListBox  x:Name="lb_kboranking6" ItemContainerStyle="{StaticResource listboxContainStyle}" BorderThickness="0"/>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <Grid>
+                            <Border BorderThickness="0,0,1,1" BorderBrush="#E0E0E0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <ctrl:SamllCardHeader HdTitle="홈런 순위"/>
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="1"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="1">
+                                            <ListBox  x:Name="lb_kboranking19" ItemContainerStyle="{StaticResource listboxContainStyle2}" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <ListBox  x:Name="lb_kboranking7" ItemContainerStyle="{StaticResource listboxContainStyle}" BorderThickness="0"/>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <Grid>
+                            <Border BorderThickness="0,0,1,1" BorderBrush="#E0E0E0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <ctrl:SamllCardHeader HdTitle="도루 순위"/>
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="1"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="1">
+                                            <ListBox  x:Name="lb_kboranking20" ItemContainerStyle="{StaticResource listboxContainStyle2}" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <ListBox  x:Name="lb_kboranking8" ItemContainerStyle="{StaticResource listboxContainStyle}" BorderThickness="0"/>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <Grid>
+                            <Border BorderThickness="1,0,1,1" BorderBrush="#E0E0E0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <ctrl:SamllCardHeader HdTitle="WHIP 순위"/>
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="1"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="1">
+                                            <ListBox  x:Name="lb_kboranking21" ItemContainerStyle="{StaticResource listboxContainStyle2}" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <ListBox  x:Name="lb_kboranking9" ItemContainerStyle="{StaticResource listboxContainStyle}" BorderThickness="0"/>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <Grid>
+                            <Border BorderThickness="0,0,1,1" BorderBrush="#E0E0E0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <ctrl:SamllCardHeader HdTitle="OPS 순위"/>
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="1"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="1">
+                                            <ListBox  x:Name="lb_kboranking22" ItemContainerStyle="{StaticResource listboxContainStyle2}" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <ListBox  x:Name="lb_kboranking10" ItemContainerStyle="{StaticResource listboxContainStyle}" BorderThickness="0"/>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <Grid>
+                            <Border BorderThickness="0,0,1,1" BorderBrush="#E0E0E0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <ctrl:SamllCardHeader HdTitle="투수 WAR 순위"/>
+                                    
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="1"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="1">
+                                            <ListBox  x:Name="lb_kboranking23" ItemContainerStyle="{StaticResource listboxContainStyle2}" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <ListBox  x:Name="lb_kboranking11" ItemContainerStyle="{StaticResource listboxContainStyle}" BorderThickness="0"/>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <Grid>
+                            <Border BorderThickness="0,0,1,1" BorderBrush="#E0E0E0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <ctrl:SamllCardHeader HdTitle="타자 WAR 순위"/>
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="1"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="1">
+                                            <ListBox  x:Name="lb_kboranking24" ItemContainerStyle="{StaticResource listboxContainStyle2}" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <ListBox  x:Name="lb_kboranking12" ItemContainerStyle="{StaticResource listboxContainStyle}" BorderThickness="0"/>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                    
+
+                    </UniformGrid>
+                </Grid>
+
+                <Grid Grid.Row="10">
+                    <TabControl BorderThickness="0" Background="White">
+                        <TabControl.Resources>
+                            <Style TargetType="TabItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="TabItem">
+                                            <Grid Name="Panel">
+                                                <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter TargetName="Panel" Property="Background" Value="White" />
+                                                    <Setter Property="Foreground" Value="#3366CC"/>
+                                                </Trigger>
+                                                <Trigger Property="IsSelected" Value="False">
+                                                    <Setter TargetName="Panel" Property="Background" Value="White" />
+                                                    <Setter Property="Foreground" Value="#777777"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        
+                        
+                        </TabControl.Resources>
+                        <TabItem Header="투수 순위" FontSize="17" Cursor="Hand" FontWeight="Bold">
+                            <DataGrid Loaded="Batter_Loaded"  BorderBrush="#ECECEC" Background="Transparent" 
+                          CanUserSortColumns="True" CanUserResizeColumns="False" CanUserReorderColumns="False" GridLinesVisibility="None" 
+                         CanUserResizeRows="False"  AutoGenerateColumns="False" RowHeaderWidth="0" FontWeight="Light"  CanUserAddRows="False" BorderThickness="1,3,1,1" Cursor="Arrow">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding B_Rank}" Header="순위" Width="45" HeaderStyle="{StaticResource Rank_style2}" CellStyle="{StaticResource B_Cell}"/>
+                                    <DataGridTextColumn Binding="{Binding B_Player}" Header="선수" Width="158" HeaderStyle="{StaticResource Rank_style2}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding B_Average}" Header="평균자책" Width="60" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding B_Games}" Header="경기수" Width="50" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding B_Innings}" Header="이닝" Width="60" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding B_Win}" Header="승" Width="45" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding B_Loss}" Header="패" Width="45" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding B_Save}" Header="세이브" Width="45" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding B_Hold}" Header="홀드" Width="45" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding B_Strikeout}" Header="탈삼진" Width="60" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding B_Hits}" Header="피안타" Width="60" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding B_Homerun}" Header="홈런" Width="50" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding B_Concession}" Header="실점" Width="50" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding B_Walk}" Header="볼넷" Width="50" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding B_deadball}" Header="사구" Width="50" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding B_odds}" Header="승률"  Width="100" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </TabItem>
+                        <TabItem Header="타자 순위" FontSize="17" FontWeight="Bold" Cursor="Hand">
+                            <DataGrid Loaded="Pitcher_Loaded"  BorderBrush="#ECECEC" Background="Transparent" 
+                          CanUserSortColumns="True" CanUserResizeColumns="False" CanUserReorderColumns="False" GridLinesVisibility="None" 
+                         CanUserResizeRows="False"  AutoGenerateColumns="False" RowHeaderWidth="0" FontWeight="Light" CanUserAddRows="False" BorderThickness="1,3,1,1" Cursor="Arrow">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding P_rank}" Header="순위" Width="45" HeaderStyle="{StaticResource Rank_style2}" CellStyle="{StaticResource P_Cell}"/>
+                                    <DataGridTextColumn Binding="{Binding P_player}" Header="선수" Width="175" HeaderStyle="{StaticResource Rank_style2}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding P_Batting_average}" Header="타율" Width="50" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding P_games  }" Header="경기수" Width="55" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding P_steersman}" Header="타수" Width="50" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding P_hit }" Header="안타" Width="50" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding P_double}" Header="2루타" Width="50" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding P_triple}" Header="3루타" Width="50" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding P_homerun}" Header="홈런" Width="50" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding P_RBI }" Header="타점" Width="50" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding P_score }" Header="득점" Width="50" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding P_theft }" Header="도루" Width="50" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding P_Walk }" Header="볼넷" Width="50" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding P_strikeout }" Header="삼진" Width="50" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding P_OBS }" Header="출루율" Width="60" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                    <DataGridTextColumn Binding="{Binding P_SP }" Header="장타율" Width="88" HeaderStyle="{StaticResource Rank_style}" CellStyle="{StaticResource Cell2}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+                
+            </Grid>
+        </Grid>
+   </ScrollViewer>
+</Window>

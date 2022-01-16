@@ -1,0 +1,133 @@
+﻿<Window x:Class="KakaotalkSample_HHI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KakaotalkSample_HHI"
+        xmlns:views="clr-namespace:KakaotalkSample_HHI.Views"
+        mc:Ignorable="d" WindowStyle="None"  ResizeMode="NoResize" x:Name="mainwindow"
+        Icon="/Images/kakao_ico.ico"
+    Title="MainWindow" Height="580" Width="360">
+    <Grid Background="#FFEB33">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="154*"/>
+                <ColumnDefinition Width="14*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+
+            <Image Grid.Row="1"  Source="/Images/kakao_logo.png" Stretch="Uniform" Grid.ColumnSpan="4"/>
+        </Grid>
+
+
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" PreviewMouseLeftButtonDown="Grid_PreviewMouseLeftButtonDown_1"/>
+
+
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal" Grid.Column="1">
+                <Button Style="{StaticResource Kakao_Btn}" Margin="3">
+                    <Viewbox Width="15" Height="15">
+                        <Canvas Width="24" Height="24">
+                            <Path Data="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,
+                    3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,
+                    12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,
+                    5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,
+                    2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,
+                    5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,
+                    9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,
+                    12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,
+                    19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,
+                    21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,
+                    18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,
+                    18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" 
+                    Fill="Black" />
+                        </Canvas>
+                    </Viewbox>
+                </Button>
+                <TextBlock Grid.Row="0" Text="ㅣ" Style="{StaticResource KakaoBlock}"/>
+                <Button Grid.Row="0"  Style="{StaticResource Kakao_Btn}" Margin="0,0,10,0" Click="Mimimize_Click">
+                    <Viewbox Width="17" Height="17" Margin="5,0,0,0">
+                        <Canvas Width="20" Height="20">
+                            <Rectangle Width="10" 
+                Stroke="#FF423630"
+                StrokeThickness="0.75" Canvas.Top="12" Height="1" RenderTransformOrigin="0.5,0.5" Fill="#999999" Canvas.Left="5">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="-1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                        </Canvas>
+                    </Viewbox>
+                </Button>
+                <Button Grid.Row="0"   Style="{StaticResource Kakao_Btn}" x:Name="Btn_Close" Click="Btn_Close_Click" Margin="0,0,5,0">
+                    <Viewbox Height="17" Width="17" >
+                    <Canvas Height="20" Width="20">
+                            <Line    X1="12" Y1="8"     X2="22" Y2="18"  Stroke="#999999" StrokeThickness="0.75" Canvas.Right="8" Canvas.Bottom="3" Fill="#FF423630"/>
+                            <Line    X1="12" Y1="18"    X2="22" Y2="8"   Stroke="#999999" StrokeThickness="0.75" Canvas.Right="8" Canvas.Bottom="3" Fill="#FF423630"/>
+                    </Canvas>
+                    </Viewbox>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="70"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="1"  VerticalAlignment="Bottom">
+                <TextBox x:Name="txt_id" Grid.Row="1" Height="30" Tag="카카오계정 (이메일 또는 전화번호)" Style="{StaticResource placeHolder}"/>
+                <PasswordBox x:Name="txt_pwd" HorizontalAlignment="Stretch"  Grid.Row="1" Height="30" Tag="비밀번호"  VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource password}" />
+                <Button x:Name="Btn_Login" Grid.Row="1" Content="로그인" Margin="0,5,0,0" Height="30" Style="{StaticResource  Kakao_Btn_3}" Click="btnLogin_Click"/>
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="0,10,0,0">
+                <CheckBox HorizontalAlignment="Left" VerticalAlignment="Bottom" x:Name="cb_test" Content="잠금모드로 자동로그인" Style="{StaticResource check}"/>
+            </StackPanel>
+
+        </Grid>
+
+
+        <StackPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="40" >
+            <Button Grid.Row="2" Grid.Column="1" Content="카카오계정 찾기 "  Style="{StaticResource Kakao_Btn2}"/>
+            <TextBlock Text="ㅣ"  Style="{StaticResource KakaoBlock}"/>
+            <Button Grid.Row="2" Content="  비밀번호 재설정" Style="{StaticResource Kakao_Btn2}"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
+        

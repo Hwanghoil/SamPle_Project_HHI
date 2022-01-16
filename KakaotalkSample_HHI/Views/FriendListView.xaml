@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="KakaotalkSample_HHI.Views.FriendListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KakaotalkSample_HHI.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="580" d:DesignWidth="360" Background="Transparent">
+    <Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+
+
+        <Grid Grid.Column="1" Background="#FFFFFF">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9*"/>
+            </Grid.RowDefinitions>
+
+
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="19*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="친구" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" FontSize="18" Margin="15,0,140,0" FontWeight="Bold"/>
+
+                <Button  Height="30" Width="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource Kakao_Btn}" Margin="0,0,10,0" Grid.Column="1" ToolTip="친구 추가">
+                    <Viewbox Width="30" Height="30">
+                        <Canvas Width="25" Height="25">
+                            <Path Data="M497,80.333h-65.334V15c0-8.284-6.716-15-15-15s-15,6.716-15,15v65.333h-65.332c-8.284,0-15,6.716-15,15s6.716,15,15,15
+			h65.332v65.334c0,8.284,6.716,15,15,15s15-6.716,15-15v-65.334H497c8.284,0,15-6.716,15-15S505.284,80.333,497,80.333z" Fill="Black" Height="8.072" Stretch="Fill" Width="8.001" Canvas.Left="13.928" Canvas.Top="8" RenderTransformOrigin="0.469,0.446"/>
+                            <Path Data="M175.666,321.334C78.804,321.334,0,400.138,0,497c0,8.284,6.716,15,15,15h321.334c8.284,0,15-6.716,15-15
+			C351.334,400.138,272.529,321.334,175.666,321.334z M30.767,482c7.533-73.299,69.643-130.666,144.899-130.666
+			c75.258,0,137.368,57.367,144.901,130.666H30.767z" Fill="Black" Height="8.928" Stretch="Fill" Width="14" Canvas.Top="16.036"/>
+                            <Path Data="M175.666,64.267c-52.566,0-95.332,42.767-95.332,95.334c0,52.566,42.766,95.333,95.332,95.333
+			c52.567,0,95.334-42.766,95.334-95.333C271,107.034,228.233,64.267,175.666,64.267z M175.666,224.934
+			c-36.024,0-65.332-29.308-65.332-65.333c0-36.026,29.308-65.334,65.332-65.334c36.025,0,65.334,29.309,65.334,65.334
+			C241,195.626,211.691,224.934,175.666,224.934z" Fill="Black" Canvas.Left="3.216" Height="8.892" Stretch="Fill" Width="8.425" Canvas.Top="8.054"/>
+                        </Canvas>
+                    </Viewbox>
+                </Button>
+            </Grid>
+
+            <TextBox  Grid.Row="1" Margin="15,0" Height="30" Tag=" 이름 검색"   Style="{StaticResource Friend}" />
+
+            <ListBox  x:Name="Lb_List" Grid.Row="2" ItemContainerStyle="{StaticResource listboxContainStyle}" ItemTemplate="{StaticResource ListItem_Template}"/>
+        </Grid>
+
+    </Grid>
+</UserControl>
