@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:XboxSample_HHI"
         mc:Ignorable="d"
         Icon="xbox_logo.ico"
-        Title="Xbox 공식 사이트: 콘솔, 게임 및 커뮤니티ㅣxbox" Height="910" Width="1900" WindowStartupLocation="CenterScreen">
+        Title="Xbox 공식 사이트: 게임, 콘솔 및 커뮤니티ㅣxbox" Height="910" Width="1900" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <DoubleAnimation x:Key="MoveAnimationKey"
             Storyboard.TargetName="imageSlideStackPanel"
