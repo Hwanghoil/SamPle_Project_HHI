@@ -62,7 +62,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
-                        <TextBlock Text="이름"  FontSize="20"   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="이름 :"  FontSize="20"   HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                     <Grid Grid.Column="1">
                         <TextBox Width="100" Height="30" Style="{StaticResource Write_Title_Box}" HorizontalAlignment="Left"/>
